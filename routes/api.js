@@ -34,6 +34,7 @@ router.get("/api/transaction", (req, res) => {
 router.delete("/api/transaction", (req, res) => {
   Transaction.deleteMany({})
     .then((dbTransaction) => {
+      console.log(dbTransaction)
       res.json(dbTransaction);
     })
     .catch((err) => {

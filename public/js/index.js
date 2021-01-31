@@ -156,13 +156,14 @@ function sendTransaction(isAdding) {
 
 function clearTransaction() {
   // ask for confirmation before deleting records
-  const confirm = confirm("Are you sure you want to delete all transaction records")
-  if (!confirm) return
+  const goAhead = confirm("Are you sure you want to delete all transaction records?")
+  if (!goAhead) return
   // run delete call from api
   fetch("/api/transaction", {
     method: "DELETE"
   })
   // reset chart, table, and total
+  transactions = [];
   populateChart();
   populateTable();
   populateTotal();
