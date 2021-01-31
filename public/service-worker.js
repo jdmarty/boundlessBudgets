@@ -52,7 +52,7 @@ self.addEventListener("activate", function (evt) {
 self.addEventListener("fetch", function (evt) {
   // cache successful requests to the API
   if (evt.request.url.includes("/api/")) {
-    consolee.log("[Service Worker] Fetch (data)", evt.request.url);
+    console.log("[Service Worker] Fetch (data)", evt.request.url);
     evt.respondWith(
       caches
         //open the data cache

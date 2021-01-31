@@ -1,6 +1,7 @@
 let transactions = [];
 let myChart;
 
+// retrieve all transactions
 fetch("/api/transaction")
   .then(response => {
     return response.json();
@@ -8,26 +9,30 @@ fetch("/api/transaction")
   .then(data => {
     // save db data on global variable
     transactions = data;
-
+    // populate DOM elements
     populateTotal();
     populateTable();
     populateChart();
   });
 
+// Function to display the total at the top of the page
 function populateTotal() {
   // reduce transaction amounts to a single total value
   let total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
-
+  // set the total element to display the total
   let totalEl = document.querySelector("#total");
   totalEl.textContent = total;
 }
 
+// Function to display all transactions in a table
 function populateTable() {
+  // target and empty the table body
   let tbody = document.querySelector("#tbody");
   tbody.innerHTML = "";
 
+  // For every transaction retrieved from the database...
   transactions.forEach(transaction => {
     // create and populate a table row
     let tr = document.createElement("tr");
@@ -35,14 +40,15 @@ function populateTable() {
       <td>${transaction.name}</td>
       <td>${transaction.value}</td>
     `;
-
     tbody.appendChild(tr);
   });
 }
 
+// Function to fill the chart with transaction history
 function populateChart() {
   // copy array and reverse it
   let reversed = transactions.slice().reverse();
+  // set the sum of transactions to 0 at the start
   let sum = 0;
 
   // create date labels for chart
@@ -51,7 +57,7 @@ function populateChart() {
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   });
 
-  // create incremental values for chart
+  // Create an array that describes the total of the budget with each transaction
   let data = reversed.map(t => {
     sum += parseInt(t.value);
     return sum;
@@ -62,8 +68,10 @@ function populateChart() {
     myChart.destroy();
   }
 
+  // target the chart canvas
   let ctx = document.getElementById("myChart").getContext("2d");
 
+  // create a new chart on that canvas
   myChart = new Chart(ctx, {
     type: 'line',
       data: {
@@ -78,7 +86,9 @@ function populateChart() {
   });
 }
 
+// function to add a transaction to the database
 function sendTransaction(isAdding) {
+  // extract data from the DOM
   let nameEl = document.querySelector("#t-name");
   let amountEl = document.querySelector("#t-amount");
   let errorEl = document.querySelector(".form .error");
@@ -144,6 +154,7 @@ function sendTransaction(isAdding) {
   });
 }
 
+// listeners for add and subtract buttons
 document.querySelector("#add-btn").onclick = function() {
   sendTransaction(true);
 };
