@@ -154,6 +154,20 @@ function sendTransaction(isAdding) {
   });
 }
 
+function clearTransaction() {
+  // ask for confirmation before deleting records
+  const confirm = confirm("Are you sure you want to delete all transaction records")
+  if (!confirm) return
+  // run delete call from api
+  fetch("/api/transaction", {
+    method: "DELETE"
+  })
+  // reset chart, table, and total
+  populateChart();
+  populateTable();
+  populateTotal();
+}
+
 // listeners for add and subtract buttons
 document.querySelector("#add-btn").onclick = function() {
   sendTransaction(true);
@@ -161,4 +175,8 @@ document.querySelector("#add-btn").onclick = function() {
 
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
+};
+
+document.querySelector("#clr-btn").onclick = function () {
+  clearTransaction();
 };

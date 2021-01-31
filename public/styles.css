@@ -26,6 +26,15 @@ tr:nth-child(even) {
   color: red;
 }
 
+.danger {
+  color: red;
+  font-weight: 600;
+}
+
+.button-row {
+  margin: 15px 0;
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 825px;
