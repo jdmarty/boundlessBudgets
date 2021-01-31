@@ -167,6 +167,8 @@ function clearTransaction() {
   populateChart();
   populateTable();
   populateTotal();
+  // clear indexeddb
+  clearRecords()
 }
 
 // listeners for add and subtract buttons
