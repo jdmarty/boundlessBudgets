@@ -2,6 +2,7 @@
 
 ## Links
 Deployed: [https://boundlessbudgets.herokuapp.com/](https://boundlessbudgets.herokuapp.com/)
+
 Repository: [https://github.com/jdmarty/boundlessBudgets](https://github.com/jdmarty/boundlessBudgets)
 
 ![Boundless Budgets Dashboard](https://github.com/jdmarty/boundlessBudgets/blob/main/public/images/deployed.PNG)
