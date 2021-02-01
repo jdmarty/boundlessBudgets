@@ -4,6 +4,9 @@
 Deployed: [https://boundlessbudgets.herokuapp.com/](https://boundlessbudgets.herokuapp.com/)
 Repository: [https://github.com/jdmarty/boundlessBudgets](https://github.com/jdmarty/boundlessBudgets)
 
+![Boundless Budgets Dashboard](https://github.com/jdmarty/boundlessBudgets/blob/main/public/images/deployed.PNG)
+
+
 ## Description
 This application uses a combination of MongoDB and IndexedDB to maintain a budget tracking system that graphically displays expenses and income. The two database system allows the application to be used even without access to the internet, as transactions are stored in the indexedDB when the app is offline and sent to the online database once a connection is established
 
